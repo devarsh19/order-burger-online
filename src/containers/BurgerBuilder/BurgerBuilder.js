@@ -12,8 +12,6 @@ class BurgerBuilder extends Component {
             <Aux>
                <h3>Burger</h3>
                <Burger />
-               <h5>Choose ingredients</h5> 
-               <Ingredient type="bread-top"/>
             </Aux>
         );
     }
