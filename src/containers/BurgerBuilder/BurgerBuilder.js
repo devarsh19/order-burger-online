@@ -5,55 +5,71 @@ import Burger from '../../components/Burger/Burger';
 import Button from '@material-ui/core/Button'
 
 const BurgerBuilder = () => {
-    const defaultIngredients = [
-        {
-            "name": "bread-top",
-            "price": 0,
+    const initialState = {
+        ingredients: {
+            salad: {
+                qty: 1,
+                price: 1,
+            },
+            bacon: {
+                qty: 1,
+                price: 1,
+            },
+            cheese: {
+                qty: 1,
+                price: 1,
+            },
+            meat: {
+                qty: 1,
+                price: 1,
+            }
         },
-        {
-            "name": "bread-bottom",
-            "price": 0,
+        price: 0,
+    }
+    
+    const specialBurgerIngredients = {
+        salad: {
+            qty: 1,
+            price: 1,
         },
-    ]
-    const ingredientsData = [
-        {
-            "name": "bread-top",
-            "price": 0,
+        bacon: {
+            qty: 1,
+            price: 1,
         },
-        {
-            "name": "salad",
-            "price": 1,
+        cheese: {
+            qty: 2,
+            price: 1,
         },
-        {
-            "name": "bacon",
-            "price": 1,
-        },
-        {
-            "name": "cheese",
-            "price": 1,
-        },
-        {
-            "name": "meat",
-            "price": 1,
-        },
-        {
-            "name": "bread-bottom",
-            "price": 0,
-        },
-    ]
-    const [ingredients, setIngredients] = useState(defaultIngredients)
+        meat: {
+            qty: 2,
+            price: 1,
+        }
+    }
+        
+    const [state, setState] = useState(initialState)
     
     const resetBurger = () => {
-        setIngredients(defaultIngredients)
+        setState(
+            {
+                ...state,
+                ingredients: {}
+            }
+        )
     }
 
     const specialBurger = () => {
-        setIngredients(ingredientsData)
+        setState(
+            {
+                ...state,
+                ingredients: specialBurgerIngredients,
+                price: 12
+            }
+        )
     }
     return (
         <Aux>
             <h3>Burger</h3>
-            <Burger ingredients={ingredients}/>
+            <Burger ingredients={state.ingredients}/>
             <Button variant="contained" color="secondary" onClick={resetBurger}>Reset</Button>
             <Button variant="contained" color="primary" onClick={specialBurger}>Chefs's special Burger</Button>
 
