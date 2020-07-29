@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Aux from '../../hoc/Auxilary'
 import Burger from '../../components/Burger/Burger';
 import Button from '@material-ui/core/Button'
+import BuildControls from '../../components/BuildControls/BuildControls'
 
 const BurgerBuilder = () => {
     const initialState = {
@@ -72,7 +73,8 @@ const BurgerBuilder = () => {
             <Burger ingredients={state.ingredients}/>
             <Button variant="contained" color="secondary" onClick={resetBurger}>Reset</Button>
             <Button variant="contained" color="primary" onClick={specialBurger}>Chefs's special Burger</Button>
-
+			
+			<BuildControls allIngredients={state.ingredients}/>
         </Aux>
     );
 };
