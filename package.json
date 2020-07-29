@@ -48,6 +48,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "node scripts/build.js",
+    "lint": "eslint ./src --fix",
     "test": "node scripts/test.js --env=jsdom"
   },
   "jest": {
