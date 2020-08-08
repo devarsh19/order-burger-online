@@ -70,10 +70,12 @@ const BurgerBuilder = () => {
     return (
         <Aux>
             <h3>Burger</h3>
+            <div>
+                <Button variant="contained" color="secondary" onClick={resetBurger}>Reset</Button>
+                <Button variant="contained" color="primary" onClick={specialBurger}>Chefs's special Burger</Button>
+            </div>
             <Burger ingredients={state.ingredients}/>
-            <Button variant="contained" color="secondary" onClick={resetBurger}>Reset</Button>
-            <Button variant="contained" color="primary" onClick={specialBurger}>Chefs's special Burger</Button>
-			
+            <br />
 			<BuildControls allIngredients={state.ingredients}/>
         </Aux>
     );
