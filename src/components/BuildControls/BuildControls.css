@@ -1,3 +1,7 @@
+.Wrapper{
+    margin-top: -40px;
+}
+
 .BuildControls{
     width: 100%;
     display: -webkit-box;

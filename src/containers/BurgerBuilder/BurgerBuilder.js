@@ -23,9 +23,9 @@ const BurgerBuilder = () => {
             meat: {
                 qty: 1,
                 price: 1,
-            }
+            },
         },
-        price: 0,
+        price: 8.00,
     }
     
     const specialBurgerIngredients = {
@@ -49,15 +49,6 @@ const BurgerBuilder = () => {
         
     const [state, setState] = useState(initialState)
     
-    const resetBurger = () => {
-        setState(
-            {
-                ...state,
-                ingredients: {}
-            }
-        )
-    }
-
     const specialBurger = () => {
         setState(
             {
@@ -67,16 +58,16 @@ const BurgerBuilder = () => {
             }
         )
     }
+
     return (
         <Aux>
-            <h3>Burger</h3>
             <div>
-                <Button variant="contained" color="secondary" onClick={resetBurger}>Reset</Button>
                 <Button variant="contained" color="primary" onClick={specialBurger}>Chefs's special Burger</Button>
+                <h3>Total: {state.price}</h3>
             </div>
-            <Burger ingredients={state.ingredients}/>
             <br />
 			<BuildControls allIngredients={state.ingredients}/>
+            <Burger ingredients={state.ingredients}/>
         </Aux>
     );
 };
