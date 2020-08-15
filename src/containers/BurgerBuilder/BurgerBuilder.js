@@ -1,7 +1,7 @@
 // import React, { Component } from 'react';
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Aux from '../../hoc/Auxilary'
-import Burger from '../../components/Burger/Burger';
+import Burger from '../../components/Burger/Burger'
 import Button from '@material-ui/core/Button'
 import BuildControls from '../../components/BuildControls/BuildControls'
 
@@ -30,24 +30,24 @@ const BurgerBuilder = () => {
     const [state, setState] = useState(initialState)
     const [error, setError] = useState('')
     
-    const specialBurgerIngredients = {
-        salad: {
-            qty: 1,
-            price: 1,
-        },
-        bacon: {
-            qty: 1,
-            price: 1,
-        },
-        cheese: {
-            qty: 2,
-            price: 1,
-        },
-        meat: {
-            qty: 2,
-            price: 1,
-        }
-    }
+	const specialBurgerIngredients = {
+		salad: {
+			qty: 1,
+			price: 1,
+		},
+		bacon: {
+			qty: 1,
+			price: 1,
+		},
+		cheese: {
+			qty: 2,
+			price: 1,
+		},
+		meat: {
+			qty: 2,
+			price: 1,
+		}
+	}
         
     
     const specialBurger = () => {
@@ -117,4 +117,4 @@ const BurgerBuilder = () => {
     );
 };
 
-export default BurgerBuilder;
+export default BurgerBuilder
