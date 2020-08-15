@@ -4,16 +4,13 @@ import Button from '@material-ui/core/Button'
 import classes from './BuildControl.css'
 import { capitalizeFirst } from '../../../utils';
 
-const BuildControl = ({ingredientName, key}) => {
+const BuildControl = ({ingredientName, addIngredient, removeIngredient}) => {
     return (
         <div className={classes.BuildControl}>
-            <Button className={classes.Less}>Less</Button>
+            <Button className={classes.Less} onClick={() => removeIngredient(ingredientName)}>Less</Button>
             <div className={classes.Label}>{capitalizeFirst(ingredientName)}</div>
-            <Button className={classes.More}>More</Button>
+            <Button className={classes.More} onClick={() => addIngredient(ingredientName)}>More</Button>
         </div>
-        // <Aux>
-        //     <p key={key} className={classes.Label}> <Button size="small" variant="contained" color="primary">Add</Button> {ingredientName} <Button size="small"  variant="contained" color="secondary">Remove</Button></p>
-        // </Aux>
     );
 };
 

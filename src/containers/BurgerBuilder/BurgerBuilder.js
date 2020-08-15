@@ -27,6 +27,8 @@ const BurgerBuilder = () => {
         },
         price: 8.00,
     }
+    const [state, setState] = useState(initialState)
+    const [error, setError] = useState('')
     
     const specialBurgerIngredients = {
         salad: {
@@ -47,7 +49,6 @@ const BurgerBuilder = () => {
         }
     }
         
-    const [state, setState] = useState(initialState)
     
     const specialBurger = () => {
         setState(
@@ -59,14 +60,58 @@ const BurgerBuilder = () => {
         )
     }
 
+    const addIngredientHandler = (type) => {
+        setError('')
+        const updatedState = {
+            ...state
+        }
+        if (updatedState.ingredients[type].qty > 2) {
+            setError(`It won't taste good by exceeding ${type} in the burger beyond this. (trust us)`)
+            return false
+        }
+        updatedState.ingredients[type].qty += 1; 
+        updatedState.price = updatedState.price + updatedState.ingredients[type].price
+        console.log(updatedState)
+        setState({
+            ...updatedState
+        });
+    }
+
+    const removeIngredientHandler = (type) => {
+        setError('')
+        const updatedState = {
+            ...state
+        }
+
+        if (updatedState.ingredients[type].qty < 1) {
+            setError(`You can't eat bun only. Infact we want you to eat healthy burger.`)
+            return false
+        }
+        
+        updatedState.ingredients[type].qty -= 1; 
+        updatedState.price -= updatedState.ingredients[type].price
+        setState({
+            ...updatedState
+        });
+    }
+
     return (
         <Aux>
             <div>
-                <Button variant="contained" color="primary" onClick={specialBurger}>Chefs's special Burger</Button>
+                <Button variant="contained" color="primary"
+                    onClick={specialBurger}>
+                    Chefs's special Burger
+                </Button>
                 <h3>Total: {state.price}</h3>
             </div>
+            {error ? <p style={{color: 'black'}}>{error}</p> : null} 
             <br />
-			<BuildControls allIngredients={state.ingredients}/>
+
+            <BuildControls
+                allIngredients={state.ingredients}
+                addIngredient={addIngredientHandler}
+                removeIngredient={removeIngredientHandler}
+            />
             <Burger ingredients={state.ingredients}/>
         </Aux>
     );
